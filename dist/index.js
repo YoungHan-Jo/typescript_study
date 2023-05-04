@@ -91,3 +91,89 @@ let user = [1234, 'hello', true];
 console.log(user[0]);
 console.log(user[1]);
 console.log(user[2]);
+// =============================================
+// enum
+var Avengers;
+(function (Avengers) {
+    Avengers[Avengers["SpiderMan"] = 0] = "SpiderMan";
+    Avengers[Avengers["IronMan"] = 1] = "IronMan";
+    Avengers[Avengers["Hulk"] = 2] = "Hulk";
+})(Avengers || (Avengers = {}));
+let hero = Avengers.SpiderMan;
+var Color;
+(function (Color) {
+    Color[Color["RED"] = 0] = "RED";
+    Color[Color["GREEN"] = 1] = "GREEN";
+    Color[Color["BLUE"] = 2] = "BLUE";
+})(Color || (Color = {}));
+let c;
+c = Color.BLUE;
+let d = Color.RED;
+var Week;
+(function (Week) {
+    Week[Week["Sun"] = 0] = "Sun";
+    Week[Week["Mon"] = 1] = "Mon";
+    Week[Week["Tue"] = 2] = "Tue";
+    Week[Week["Wed"] = 3] = "Wed";
+    Week[Week["Thu"] = 4] = "Thu";
+    Week[Week["Fri"] = 5] = "Fri";
+    Week[Week["Sat"] = 6] = "Sat";
+})(Week || (Week = {}));
+console.log(Week.Sun);
+console.log(Week['Sun']);
+console.log(Week[0]);
+let weekName = Week[0];
+console.log(weekName);
+// =========================================
+// Object
+let obj = {};
+let arr = [];
+let func = function () { };
+let nullValue = null;
+let date = new Date();
+// 객체 타입 선언시 가독성이 안좋음
+let userA;
+userA = {
+    name: 'John',
+    age: 32
+};
+let iuserA = {
+    name: "A",
+    age: 123
+};
+let IUser = {
+    name: "B",
+    age: 40
+};
+// ================================
+// any type
+let any = 123;
+any = 'hello world!';
+any = {};
+any = null;
+let list = [1, true, "free"];
+console.log('list:', list);
+list[1] = 100;
+console.log('list:', list);
+// =================================
+// Unknown
+let any1 = 123;
+let un = 123;
+let value = 10;
+console.log(value.length);
+let valueNum = 10;
+let valueStr = 'test';
+// console.log(valueNum.length)
+// unknown은 컴파일 에러 나옴
+// typeof 를 이용하여 풀어낼 수 있다.
+// 손이 좀 더 가지만 any 타입에 비해 안정적으로 개발 할 수 있다.
+if (typeof valueStr === "string") {
+    console.log(valueStr.length);
+}
+// ==================================
+// void type
+function hello(n) {
+    let sum = n + 1;
+}
+const hi = hello(1);
+console.log('hi:', hi);

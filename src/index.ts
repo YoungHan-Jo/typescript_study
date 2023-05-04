@@ -196,19 +196,147 @@ let func: object = function () { };
 let nullValue: any = null;
 let date: object = new Date();
 
+
+// 객체 타입 선언시 가독성이 안좋음
 let userA: { name: string, age: number };
 userA = {
     name: 'John',
     age: 32
 };
 
-type IUser = {
+// type 리터럴인 alias으로 해결가능
+type AUser = {
     name: string,
     age: number
 }
 
-let iuserA: IUser = {
+let iuserA: AUser = {
     name: "A",
     age: 123
 };
+
+// 혹은 인터페이스로 가능
+interface IUser {
+    name: string,
+    age: number
+}
+
+let IUser = {
+    name: "B",
+    age: 40
+}
+
+
+// ================================
+// any type
+let any: any = 123;
+any = 'hello world!';
+any = {};
+any = null;
+
+let list: any[] = [1, true, "free"]
+console.log('list:', list)
+list[1] = 100;
+
+console.log('list:', list)
+
+
+// =================================
+// Unknown
+
+let any1: any = 123;
+let un: unknown = 123;
+
+let value: any = 10;
+console.log(value.length);
+
+let valueNum: unknown = 10;
+let valueStr: unknown = 'test';
+// console.log(valueNum.length)
+// unknown은 컴파일 에러 나옴
+
+// typeof 를 이용하여 풀어낼 수 있다.
+// 손이 좀 더 가지만 any 타입에 비해 안정적으로 개발 할 수 있다.
+if (typeof valueStr === "string") {
+    console.log(valueStr.length);
+}
+
+
+// ==================================
+// void type
+
+function hello(n: number): void {
+    let sum: number = n + 1;
+}
+
+const hi: void = hello(1)
+console.log('hi:', hi);
+
+
+// =====================================
+console.log('literal type')
+
+const numLiteral = 3;
+
+const arrLiteral = [1, 3];
+
+type Easing = 'ease-in' | 'ease-out' | 'ease-in-out';
+
+function animate(dx: number, dy: number, easing: Easing) {
+    // 
+}
+
+// =========================================
+console.log('')
+console.log('union')
+
+let union: string | number;
+union = 'hello world!'
+union = 123;
+
+let unionArr: (string | number)[] = ['apple', 1, 2, 3]
+
+let unionArray: Array<string | number> = ['apple', 1, 2, 3]
+
+
+// ============================================
+// type alias
+
+
+type Operation = {
+    version: string,
+    el: (selector: string) => void,
+    css: (prop: string) => void
+}
+
+let Dam: Operation = {
+    version: "",
+    el: function (selector: string): void {
+        throw new Error("Function not implemented.");
+    },
+    css: function (prop: string): void {
+        throw new Error("Function not implemented.");
+    }
+}
+
+type Name = string;
+type Age = number;
+
+let typename: Name = 'tom';
+let typeage: Age = 13;
+
+
+// =====================================
+// interface
+console.log('interface')
+
+interface Person {
+    name: string,
+    age: number;
+}
+
+interface Developer extends Person {
+    skill: string;
+}
+
 
