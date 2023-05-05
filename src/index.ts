@@ -339,4 +339,52 @@ interface Developer extends Person {
     skill: string;
 }
 
+function logUser(obj: Developer){
+    console.log(obj.name)
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
