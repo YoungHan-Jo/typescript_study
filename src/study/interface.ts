@@ -59,14 +59,14 @@ enum Gender {
     Male,
     Female
 }
-interface User {
+interface UserInterface3 {
     name: string;
     age: number;
     gender: Gender;
     readonly birthday: number;
 }
 
-let user: User = {
+let user: UserInterface3 = {
     name: "Jack",
     age: 20,
     gender: Gender.Male,

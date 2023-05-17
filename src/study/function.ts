@@ -170,14 +170,14 @@ function addOL(a: any, b: any): any{ // 実行部
 console.log(addOL('hello ','world!'))
 console.log(addOL(2,3))
 
-interface User{
+interface UserInterface2{
     name: string;
     age: number;
 }
 
 // function join(name: string, age: number | string): User | string{...}
 // User or string 何を返すか分からない
-function join(name: string, age: number): User;
+function join(name: string, age: number): UserInterface2;
 function join(name: string, age: string): string;
 function join(name: any, age: any): any{
     if(typeof age === 'number'){
