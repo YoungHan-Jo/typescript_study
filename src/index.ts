@@ -1,368 +1,174 @@
+import { random } from "lodash";
+
 console.log('Hello Typescript!!')
 
-function myFunc1(x: number, y: number): number {
-    return x + y;
-}
 
-console.log(myFunc1(1, 3));
-
-let myFunc2 = function (x: number, y: number): number {
-    return x + y;
-}
-
-console.log('myFunc2: ', myFunc2(2, 3))
-
-let myFunc3 = (x: number, y: number): number => {
-    return x + y;
-}
-
-console.log('myFunc3: ', myFunc3(4, 5))
-
-
-
-
-
-let myFunc4: (arg1: number, arg2: number) => number;
-myFunc4 = function (x, y) {
-    return x + y;
-}
-
-console.log('myfunc4')
-console.log(myFunc4(1, 2))
-
-let pracfunc4: (arg1: number, arg2: number) => number;
-pracfunc4 = (x, y) => {
-    return x + y;
-}
-
-console.log('pracfunc4')
-console.log(pracfunc4(1, 2))
-
-
-
-
-let myFunc5: (arg1: number, arg2: number) => number = (x, y) => {
-    return x + y;
-}
-
-console.log('myFunc5')
-console.log(myFunc5(2, 3))
-
-
-let pracfunc5: (arg1: number, arg2: number) => number = (x, y) => {
-    return x + y;
-}
-
-
-type Add1 = (x: number, y: number) => number;
-let myFunc6: Add1 = (x, y) => {
-    return x + y;
-}
-
-console.log('myfunc6:', myFunc6(1, 2))
-
-let pracFunc6: Add1;
-pracFunc6 = (x, y) => {
-    return x + y;
-}
-
-console.log('pracfunc6:', pracFunc6(2, 3))
-
-interface Add2 {
-    (x: number, y: number): number;
-}
-let myFunc7: Add2 = (x, y) => {
-    return x + y;
-}
-console.log('myfunc7:', myFunc7(1, 2))
-
-let pracFunc7: Add2;
-pracFunc7 = (x, y) => {
-    return x + y;
-}
-console.log('pracFunc7:', pracFunc7(2, 3))
-
-
+// Boolean type
 let isBoolean: boolean;
 isBoolean = true;
 
 let isDone: boolean = false;
 
-let num: number;
-let integer: number = 6;
-let float: number = 3.14;
 
+// Number type
+let num: number;
+
+let infinity: number = Infinity;
 let nan: number = NaN;
 
 function plus(num1: number, num2: number): number {
-    return num1 + num2
+    return num1 + num2;
 }
 
-console.log('plusfunction:', plus(1, 2))
+let a: number = 2;
+let b: number = 3;
 
+let result = plus(a, b);
+console.log(a, '+', b, '=', result);
 
-let red: string = 'Red';
+let type: string;
+
+type = typeof (result);
+console.log('typeOf: ', type);
+
+// string type
+let red: string = 'red';
+
 let green: string = "Green";
 let yourColor: string = 'Your color is' + green;
 
 let myColor: string = `My color is ${red}.`;
 
-function strings(str1: string, str2: string): string {
-    return str1 + ' and ' + str2;
-}
+console.log(myColor)
 
-console.log('strings:', strings(red, green))
+// Array type
+let fruits: string[] = ['Apple', 'Banana', 'Orange']
 
-// ========================================================
-// Array
-let fruits: string[] = ['Apple', 'Banana', 'Mango'];
-// let fruits: Array<string> = ['Apple', 'Banana', 'Mango'];
+fruits.forEach(fruit => {
+    console.log(fruit)
+});
 
-// 모든 데이터 타입 any[]
-let someArr: any[] = [0, 1, {}, [], 'str', false];
+let animals: Array<string> = ['bear', 'cat', 'dog']
+animals.forEach(element => {
+    console.log(element)
+});
 
-// 특정 데이터 타입만 아이테믕로 사용 union
-let selects: (number | string)[] = [1, 2, 3, 'one', 'two'];
+let anythings: any[] = [true, 1, 'string']
+anythings.forEach(element => {
+    console.log(element)
+});
 
-function getArr(...args: number[]): number[] {
+function getArr(...args: number[]): number[]{
     return args;
 }
 
+let resultArr = getArr(1,2,3,4,5);
+console.log(resultArr);
+console.log('type is',typeof(resultArr)) // object
 
-let a = getArr(1, 2, 3, 4, 5, 7);
-
-console.log('a:', a);
-
-
-//======================================
-// tuple, 사이즈가 정해전 배열, 타입순서 맞아야함
-
-let rgbColor: [number, number, number] = [255, 255, 0];
-
-let x: [string, number];
-
-x = ['hello', 0]
+// tuple type
+let rgbColor: [number, number, number] = [255,255,0]
 
 
-let user: [number, string, boolean] = [1234, 'hello', true]
-console.log(user[0]);
-console.log(user[1]);
-console.log(user[2]);
-
-
-
-// =============================================
-// enum
-
-enum Avengers { SpiderMan, IronMan, Hulk }
+// Enum
+enum Avengers {
+    SpiderMan,
+    IronMan,
+    Thor,
+    Hulk
+}
 
 let hero: Avengers = Avengers.SpiderMan;
 
-enum Color {
-    RED,
-    GREEN,
-    BLUE,
-}
 
-let c: Color;
-c = Color.BLUE;
-
-let d = Color.RED
-
-enum Week {
-    Sun,
-    Mon,
-    Tue,
-    Wed,
-    Thu,
-    Fri,
-    Sat
-}
-
-console.log(Week.Sun);
-console.log(Week['Sun']);
-console.log(Week[0]);
-
-let weekName: string = Week[0];
-console.log(weekName);
-
-
-// =========================================
-// Object
-
-let obj: object = {};
-let arr: object = [];
-let func: object = function () { };
-let nullValue: any = null;
-let date: object = new Date();
-
-
-// 객체 타입 선언시 가독성이 안좋음
-let userA: { name: string, age: number };
+// Object (array, function etc..)
+let userA: {name: string, age: number}
 userA = {
-    name: 'John',
-    age: 32
-};
+    name: 'Tom',
+    age: 22
+}
 
-// type 리터럴인 alias으로 해결가능
-type AUser = {
+// => aliasで表現
+type AliasUser = {
     name: string,
     age: number
 }
-
-let iuserA: AUser = {
-    name: "A",
-    age: 123
-};
-
-// 혹은 인터페이스로 가능
-interface IUser {
+let userB: AliasUser = {
+    name: 'Jack',
+    age: 33
+}
+// => interfaceで表現
+interface InterfaceUser {
     name: string,
     age: number
 }
-
-let IUser = {
-    name: "B",
+let userC: InterfaceUser ={
+    name: "Sam",
     age: 40
 }
 
+// any vs unknown
 
-// ================================
-// any type
-let any: any = 123;
-any = 'hello world!';
-any = {};
-any = null;
+let anyValue: any = 10;
+console.log(anyValue.length); //undefined
 
-let list: any[] = [1, true, "free"]
-console.log('list:', list)
-list[1] = 100;
-
-console.log('list:', list)
-
-
-// =================================
-// Unknown
-
-let any1: any = 123;
-let un: unknown = 123;
-
-let value: any = 10;
-console.log(value.length);
-
-let valueNum: unknown = 10;
-let valueStr: unknown = 'test';
-// console.log(valueNum.length)
-// unknown은 컴파일 에러 나옴
-
-// typeof 를 이용하여 풀어낼 수 있다.
-// 손이 좀 더 가지만 any 타입에 비해 안정적으로 개발 할 수 있다.
-if (typeof valueStr === "string") {
-    console.log(valueStr.length);
+let unknownValue: unknown = 'abcdefg';
+// console.log(unknownValue.length);　// type check しないと使えない
+if(typeof unknownValue === "string"){ // unknownnの方がanyより安定的
+    console.log(unknownValue.length);
 }
 
 
-// ==================================
-// void type
-
-function hello(n: number): void {
-    let sum: number = n + 1;
+// never type
+function error(message: string): never {
+    throw new Error(message);
 }
 
-const hi: void = hello(1)
-console.log('hi:', hi);
+function fail(){
+    return error("something is wrong")
+}
+// let failResult = fail();
 
+function fn(input: never){}
 
-// =====================================
-console.log('literal type')
+declare let myNever: never;
+// fn(myNever);
 
-const numLiteral = 3;
-
-const arrLiteral = [1, 3];
-
-type Easing = 'ease-in' | 'ease-out' | 'ease-in-out';
-
-function animate(dx: number, dy: number, easing: Easing) {
-    // 
+function unknownColor(x: never): never{
+    throw new Error('unknown color')
 }
 
-// =========================================
-console.log('')
-console.log('union')
+type Color = 'red' | 'green' | 'blue'
 
-let union: string | number;
-union = 'hello world!'
-union = 123;
-
-let unionArr: (string | number)[] = ['apple', 1, 2, 3]
-
-let unionArray: Array<string | number> = ['apple', 1, 2, 3]
-
-
-// ============================================
-// type alias
-
-
-type Operation = {
-    version: string,
-    el: (selector: string) => void,
-    css: (prop: string) => void
-}
-
-let Dam: Operation = {
-    version: "",
-    el: function (selector: string): void {
-        throw new Error("Function not implemented.");
-    },
-    css: function (prop: string): void {
-        throw new Error("Function not implemented.");
+function getColorName(c: Color): string {
+    switch (c) {
+        case 'red':
+            return 'is red'
+        case 'green':
+            return 'is green'
+        case 'blue':
+            return 'is blue'
+        default:
+            return unknownColor(c); 
     }
 }
 
-type Name = string;
-type Age = number;
-
-let typename: Name = 'tom';
-let typeage: Age = 13;
-
-
-// =====================================
-// interface
-console.log('interface')
-
-interface Person {
-    name: string,
-    age: number;
+// void
+function hello(n: number):void{
+    let sum: number = n + 1;
 }
 
-interface Developer extends Person {
-    skill: string;
+// literal type , overloadを使うとき
+
+const constNum = 3;
+
+type Animal = 'Bear' | 'Cat' | 'dog'
+
+function introduce(name: string, age: number, animal: Animal){
+    console.log('my name is', name, 'i am', age, 'years old', 'and my favorite animal is', animal);
 }
 
-function logUser(obj: Developer){
-    console.log(obj.name)
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+introduce('tom',24,'Cat');
 
 
 
