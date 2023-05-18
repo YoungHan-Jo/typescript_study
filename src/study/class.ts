@@ -21,10 +21,10 @@ let dog = new Dog('Mike')
 console.log(dog.getName());
 
 
-function sleep(animal: Animal): void {
+function sleeping(animal: Animal): void {
     console.log(`${animal.name} goes to sleep`);
 }
-sleep(dog);
+sleeping(dog);
 
 class Snake extends Animal {
     leg: number = 0;
