@@ -1,7 +1,7 @@
 // promise chaining
 // いくつの非同期作業を順番的に
 
-function doSomething(arg: any) {
+const doSomething = (arg: any) => {
     return new Promise<number>((resolve, reject) => {
         resolve(arg);
     })

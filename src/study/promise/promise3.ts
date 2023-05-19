@@ -13,7 +13,7 @@ const promise = new Promise((resolve,reject) => {
     }, 1000);
 })
 
-async function main3() {
+const main3 = async () => {
     console.log(promise); // result: undefined , state: pending
     await sleep(2000);    // ２秒後
     console.log(promise); // result: 'finished', state: fulfilled

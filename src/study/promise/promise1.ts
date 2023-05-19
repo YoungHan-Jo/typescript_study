@@ -28,7 +28,7 @@ fetch('https://example.com/api')
 
 const url = "localhost:3000/api/v1/users";
 
-async function getData() {
+const getData = async () => {
     const response = await fetch(url);
     const data = await response.json();
     const response2 = await fetch(url + '/1');
@@ -36,35 +36,36 @@ async function getData() {
     console.log(data);
     console.log(data2);
 }
+
 // こっちのほうが見やすい
 
 
 
 // Promiseを代替するためではない、内部的にはPromiseが作動し、見える文法だけを async, awaitで表現する
 
-function delay(ms: number): Promise<void> {
+const delay = (ms: number): Promise<void> => {
     return new Promise<void>(resolve => {
         setTimeout(() => {
             console.log(`${ms} msが経ちました。`);
             resolve();
         }, ms);
-    });
+    })
 }
 
-function main1a(){
+const main1a = () => {
     delay(1000)
-    .then(() => {
-        return delay(2000);
-    })
-    .then(() => {
-        return Promise.resolve('end');
-    })
-    .then(result => {
-        console.log(result);
-    });
+        .then(() => {
+            return delay(2000);
+        })
+        .then(() => {
+            return Promise.resolve('end');
+        })
+        .then(result => {
+            console.log(result);
+        });
 }
 
-async function main1() {
+const main1 = async () => {
     await delay(1000);
     await delay(2000);
     const result = await Promise.resolve('end');
@@ -81,7 +82,7 @@ const func1 = async () => {
     const data = await res.json(); // parse to json
 }
 
-async function func2() {
+const func2 = async () => {
     return 1;
 }
 
@@ -89,7 +90,7 @@ console.log(func2());
 // promiseState: "fulfilled"
 // promiseResult: 1
 
-function main1b() {
+const main1b = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => {
